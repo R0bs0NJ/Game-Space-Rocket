@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="Score" sid="345674527264037" static="0" type="number">0</variable>
+        <event-block sid="437441929884231">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="946325454089667" type="System" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="524295466953057" type="Player">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="0" name="Set text" sid="883983319955320" type="Text2">
+                    <param id="0" name="Text">&quot;Pontuação: &quot;&amp;Score</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="644083990264714">
+            <conditions>
+                <condition id="0" name="On click" sid="371847609479047" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="186134082727673" type="Player">
+                    <param id="0" name="Object">Bullet</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="618662984474978">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="102282658722820" type="Bullet">
+                    <param id="0" name="Object">Monster</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="499905115394292" type="Monster">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="637803680592294" type="Bullet">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="588746194211231" type="Bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="544756423758396">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="864324667045177" type="System" />
+            </conditions>
+            <actions>
+                <action id="-8" name="Set angle" sid="580222139461584" type="Monster">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="747607101175895">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="900295999804550" type="Monster" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="644343627647424" type="Monster">
+                    <param id="0" name="X">Player.X</param>
+                    <param id="1" name="Y">Player.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="649058109775593">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="229091946002850" type="Monster">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="234540226568600" type="Monster">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="101436603133808" type="Monster" />
+                <action id="-10" name="Add to" sid="505127693782635" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="886742585180475">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="347791843257830" type="System">
+                    <param id="0" name="Interval (seconds)">3.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="378577502952896" type="System">
+                    <param id="0" name="Object to create">Monster</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(1400)</param>
+                    <param id="3" name="Y">random(1024)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="917456428329432">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="563042353992114" type="Monster">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="328720762469185" type="Player" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
